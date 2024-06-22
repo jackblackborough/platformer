@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"general_funky_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"general_funky_functions",
+  "parent":{
+    "name":"Platformer",
+    "path":"Platformer.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
