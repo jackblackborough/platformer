@@ -9,14 +9,28 @@ runKey = keyboard_check(ord("H"))
 moveDir = rightKey - leftKey;
 if moveDir != 0{face = moveDir;};
 
-
-
 runType = runKey;
 xspd = moveDir * moveSpd[runType];
+
+
+
+
+
+
+
+
 
 // X Collisions
 var _subPixel = 0.5;
 if (place_meeting(x + xspd, y, oWall)) {
+	
+	if !place_meeting(x + xspd, y - abs(xspd) - 1, oWall){
+		
+		
+		while place_meeting(x + xspd, y, oWall) {y -= _subPixel; };
+		
+	}
+	else{
 	
 	// Scoot up to the wall
 	var _pixelCheck = _subPixel * sign(xspd);
@@ -25,11 +39,37 @@ if (place_meeting(x + xspd, y, oWall)) {
 		x += _pixelCheck;
 	}
 	
+	
+	
 	// Set x speed to zero to collide
 	xspd = 0;
+	
+	}
 }
 
+
+if yspd >= 0 && !place_meeting(x + xspd, y + 1, oWall) && place_meeting( x + xspd, y + abs(xspd)+1 , oWall){
+	
+	while place_meeting(x + xspd, y + _subPixel, oWall) {y += _subPixel; };
+	
+}
+
+
 x += xspd;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //coyote ttime
@@ -85,6 +125,12 @@ if (place_meeting(x, y + yspd, oWall)) {
 		y += _pixelCheck;
 	}
 	
+	
+	if yspd < 0{jumpHoldTimer = 0;}	
+		
+	
+	
+		
 	// Set x speed to zero to collide
 	yspd = 0;
 }
