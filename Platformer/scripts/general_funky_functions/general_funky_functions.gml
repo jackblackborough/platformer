@@ -1,4 +1,5 @@
 
+
 function controlSetup() {
 	
 	bufferTime = 3;
@@ -23,6 +24,12 @@ function getControls(){
 
 	jumpKey = keyboard_check(vk_space) + gamepad_button_check(0, gp_face1);
 	jumpKey = clamp( jumpKey, 0 , 1);
+	
+	
+	runKey = keyboard_check(ord("B")) + gamepad_button_check_pressed(0, gp_face3);
+   runKey = clamp( runKey, 0 , 1);
+   
+
 	
 	if jumpKeyPressed {
 		jumpKeyBufferTimer = bufferTime;	 

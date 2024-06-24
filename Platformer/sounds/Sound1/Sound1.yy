@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"Sound1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":1,
+  "conversionMode":0,
+  "duration":103.2287,
+  "name":"Sound1",
+  "parent":{
+    "name":"Platformer",
+    "path":"Platformer.yyp",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Sound1.mp3",
+  "type":0,
+  "volume":1.0,
+}

@@ -2,11 +2,17 @@
 rightKey = keyboard_check(vk_right);
 leftKey = keyboard_check(vk_left);
 jumpKeyPressed = keyboard_check_pressed(vk_space);
+runKey = keyboard_check(ord("H"))
+
 
 // X movement, direction
 moveDir = rightKey - leftKey;
+if moveDir != 0{face = moveDir;};
 
-xspd = moveDir * moveSpd;
+
+
+runType = runKey;
+xspd = moveDir * moveSpd[runType];
 
 // X Collisions
 var _subPixel = 0.5;
@@ -25,8 +31,25 @@ if (place_meeting(x + xspd, y, oWall)) {
 
 x += xspd;
 
+
+//coyote ttime
+
+
+
+if coyoteHangTimer > 0{
+	
+	coyoteHangTimer--;
+	
+}else{
+	
+	//apply gravity
+	yspd += grav;
+	//we3 realised we are not on ground
+	set_on_ground(false);
+}
+
 // Y movement
-yspd += grav;
+
 
 if onGround{
 	
@@ -68,9 +91,66 @@ if (place_meeting(x, y + yspd, oWall)) {
 
 //set if I'm on the ground;
 if yspd >= 0 && place_meeting(x, y+1, oWall) {	
-	onGround = true;
-} else {	
-	onGround = false;	
-}
+	
+	set_on_ground(true);
+} 
 
 y += yspd;
+
+
+
+
+//Cut off the jump by releasing the jump button
+if !jumpKeyPressed
+{
+	jumpHoldTimer = 0;
+}
+
+
+
+//Jump based on the timer/holding the button
+if jumpHoldTimer > 0 
+{
+	//Constantly set the yspd to be jumping speed
+	yspd = jspd[jumpCount-1];
+	//Count down the timer
+	jumpHoldTimer--;
+}
+
+
+
+
+
+
+
+
+// SPRITE CONTROL
+
+maskSpr = sPlayerIdle
+idleSpr = sPlayerIdle;
+runSpr = sPlayerRun;
+walkSpr = sPlayerWalk;
+jumpSpr = sPlayerJump;
+
+
+
+
+
+if abs(xspd)  >   0{sprite_index = walkSpr;};
+if abs(xspd) >= moveSpd[1]{sprite_index = runSpr;};
+if xspd  ==   0{sprite_index = idleSpr;};
+if !onGround {sprite_index = jumpSpr;};
+
+mask_index = idleSpr;
+
+
+
+
+
+
+
+
+
+
+
+
