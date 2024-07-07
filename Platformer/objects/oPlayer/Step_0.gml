@@ -13,13 +13,6 @@ runType = runKey;
 xspd = moveDir * moveSpd[runType];
 
 
-
-
-
-
-
-
-
 // X Collisions
 var _subPixel = 0.5;
 if (place_meeting(x + xspd, y, oWall)) {
@@ -29,8 +22,7 @@ if (place_meeting(x + xspd, y, oWall)) {
 		
 		while place_meeting(x + xspd, y, oWall) {y -= _subPixel; };
 		
-	}
-	else{
+	} else {
 	
 	// Scoot up to the wall
 	var _pixelCheck = _subPixel * sign(xspd);
@@ -48,7 +40,7 @@ if (place_meeting(x + xspd, y, oWall)) {
 }
 
 
-if yspd >= 0 && !place_meeting(x + xspd, y + 1, oWall) && place_meeting( x + xspd, y + abs(xspd)+1 , oWall){
+if yspd >= 0 && !place_meeting(x + xspd, y + 1, oWall) && place_meeting( x + xspd, y + abs(xspd) + 1 , oWall){
 	
 	while place_meeting(x + xspd, y + _subPixel, oWall) {y += _subPixel; };
 	
@@ -163,26 +155,14 @@ if jumpHoldTimer > 0
 	jumpHoldTimer--;
 }
 
-
-
-
-
-
-
-
 // SPRITE CONTROL
-
 maskSpr = sPlayerIdle
 idleSpr = sPlayerIdle;
 runSpr = sPlayerRun;
-walkSpr = sPlayerWalk;
 jumpSpr = sPlayerJump;
 
 
-
-
-
-if abs(xspd)  >   0{sprite_index = walkSpr;};
+if abs(xspd)  >   0{sprite_index = runSpr;};
 if abs(xspd) >= moveSpd[1]{sprite_index = runSpr;};
 if xspd  ==   0{sprite_index = idleSpr;};
 if !onGround {sprite_index = jumpSpr;};

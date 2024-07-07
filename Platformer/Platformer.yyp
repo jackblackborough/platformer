@@ -14,7 +14,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.6.0.157",
   },
   "name":"Platformer",
   "resources":[
@@ -33,7 +33,6 @@
     {"id":{"name":"sPlayerIdle","path":"sprites/sPlayerIdle/sPlayerIdle.yy",},},
     {"id":{"name":"sPlayerJump","path":"sprites/sPlayerJump/sPlayerJump.yy",},},
     {"id":{"name":"sPlayerRun","path":"sprites/sPlayerRun/sPlayerRun.yy",},},
-    {"id":{"name":"sPlayerWalk","path":"sprites/sPlayerWalk/sPlayerWalk.yy",},},
     {"id":{"name":"sSlope0","path":"sprites/sSlope0/sSlope0.yy",},},
     {"id":{"name":"sSlope1","path":"sprites/sSlope1/sSlope1.yy",},},
     {"id":{"name":"sSlope2","path":"sprites/sSlope2/sSlope2.yy",},},
