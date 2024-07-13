@@ -9,6 +9,7 @@ function set_on_ground(_val = true){
 		
 		
 	onGround = false;
+	myFloorPlat = noone;
 	coyoteHangTimer = 0;
 	}
 		
@@ -34,7 +35,7 @@ yspd = 0;
 grav = 0.275;
 termVel = 4; // How fast can player fall, max, pixels per frame
 jspd = -6; // Jump speed
-jumpMax = 3; // maximum number of jumps
+jumpMax = 2000000000; // maximum number of jumps
 jumpCount = 0; //number of jumps performed
 jumpHoldTimer = 0; //diferent jump lengths
 jumpHoldFrames = 18;
@@ -45,7 +46,7 @@ onGround = true;
 // HANG TIME
 
 
-coyoteHangFrames = 5;
+coyoteHangFrames = 1200;
 coyoteHangTimer = 0 ;
 
 //JUMP BUFFER TIME(COYOTE TIME)
@@ -53,6 +54,11 @@ coyoteHangTimer = 0 ;
 coyoteJumpFrames = 6;
 coyoteJumpTimer = 0;
 
+
+
+myFloorPlat = noone;
+movePlatXspd = 0;
+movePlatMaxYspd = 15;
 
 
 

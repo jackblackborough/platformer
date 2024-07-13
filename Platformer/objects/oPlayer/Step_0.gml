@@ -64,6 +64,150 @@ x += xspd;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//Floor Y Collision
+
+var _clampYspd = max(0,yspd);
+var _list = ds_list_create();
+var _array = array_create(0);
+array_push(_array,oWall,oPlatform)
+var _listSize = instance_place_list(x, y + 1 +_clampYspd + movePlatMaxYspd,_array, _list, false);
+for(var i = 0; i < _listSize; i++ ){
+
+
+var _listInst = _list[| i];
+
+if (_listInst.yspd <= yspd || instance_exists(myFloorPlat) )
+&& (_listInst.yspd > 0 || place_meeting(x, y + 1 + _clampYspd, _listInst))
+{
+if _listInst.object_index == oWall
+|| object_is_ancestor(_listInst.object_index, oWall)
+|| floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd){
+	
+	if !instance_exists(myFloorPlat)
+	|| _listInst.bbox_top + _listInst.yspd <= myFloorPlat.bbox_top + myFloorPlat.yspd
+	|| _listInst.bbox_top + _listInst.yspd <= bbox_bottom 
+	{
+		
+		myFloorPlat = _listInst;
+		
+	        }
+        }
+    }
+}
+ds_list_destroy(_list);
+if instance_exists(myFloorPlat) && !place_meeting(x, y + movePlatMaxYspd, myFloorPlat){
+
+myFloorPlat = noone;
+
+}
+
+if instance_exists(myFloorPlat){
+	
+var _subPixel	= .5;
+while !place_meeting(x, y + _subPixel, myFloorPlat)&& !place_meeting(x, y, oWall){y += _subPixel;}
+
+
+if myFloorPlat.object_index == oPlatform || object_is_ancestor(myFloorPlat.object_index, oPlatform){
+	
+while place_meeting(x, y, myFloorPlat){ y -= _subPixel;};	
+}
+	
+	
+y = floor(y);
+yspd = 0;
+set_on_ground(true);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //coyote ttime
 
 
