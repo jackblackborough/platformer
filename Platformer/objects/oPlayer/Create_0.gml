@@ -1,18 +1,15 @@
 function set_on_ground(_val = true){
 	
-	if _val == true{
-	
-	onGround = true;
-	coyoteHangTimer = coyoteHangFrames;
-	
-	}else{
-		
-		
-	onGround = false;
-	coyoteHangTimer = 0;
+	if _val == true{	
+		onGround = true;
+		coyoteHangTimer = coyoteHangFrames;
+	} else {
+		onGround = false; 
+		myFloorPlat = noone;
+		coyoteHangTimer = 0;
 	}
-		
 }
+
 
 
 
@@ -45,7 +42,7 @@ onGround = true;
 // HANG TIME
 
 
-coyoteHangFrames = 5;
+coyoteHangFrames = 0;
 coyoteHangTimer = 0 ;
 
 //JUMP BUFFER TIME(COYOTE TIME)
@@ -55,5 +52,7 @@ coyoteJumpTimer = 0;
 
 
 
-
+myFloorPlat = noone;
+movePlatXspd = 0;
+movePlatMaxYspd = 8;
 

@@ -20,6 +20,8 @@
   "resources":[
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
+    {"id":{"name":"oSemiSolidMovePlat","path":"objects/oSemiSolidMovePlat/oSemiSolidMovePlat.yy",},},
+    {"id":{"name":"oSemiSolidWall","path":"objects/oSemiSolidWall/oSemiSolidWall.yy",},},
     {"id":{"name":"oSlope0","path":"objects/oSlope0/oSlope0.yy",},},
     {"id":{"name":"oSlope1","path":"objects/oSlope1/oSlope1.yy",},},
     {"id":{"name":"oSlope2","path":"objects/oSlope2/oSlope2.yy",},},
@@ -33,6 +35,8 @@
     {"id":{"name":"sPlayerIdle","path":"sprites/sPlayerIdle/sPlayerIdle.yy",},},
     {"id":{"name":"sPlayerJump","path":"sprites/sPlayerJump/sPlayerJump.yy",},},
     {"id":{"name":"sPlayerRun","path":"sprites/sPlayerRun/sPlayerRun.yy",},},
+    {"id":{"name":"sSemiSolidMovePlat","path":"sprites/sSemiSolidMovePlat/sSemiSolidMovePlat.yy",},},
+    {"id":{"name":"sSemiSolidWall","path":"sprites/sSemiSolidWall/sSemiSolidWall.yy",},},
     {"id":{"name":"sSlope0","path":"sprites/sSlope0/sSlope0.yy",},},
     {"id":{"name":"sSlope1","path":"sprites/sSlope1/sSlope1.yy",},},
     {"id":{"name":"sSlope2","path":"sprites/sSlope2/sSlope2.yy",},},

@@ -51,19 +51,6 @@ x += xspd;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //coyote ttime
 
 
@@ -103,7 +90,10 @@ if (jumpKeyPressed )&& jumpCount < jumpMax {
 
 	yspd = jspd;
 	jumpCount++;
+	set_on_ground(false);
 }
+
+	
 
 if yspd > termVel{yspd = termVel}
 
@@ -116,6 +106,98 @@ if (place_meeting(x, y + yspd, oWall)) {
 	{
 		y += _pixelCheck;
 	}
+	
+	
+	
+	
+//	Floor y collisions.
+	
+	     var _clampYspd = max(0, yspd);          
+	     var _list = ds_list_create();
+		 var _array = array_create(0);
+		 array_push(_array, oWall, oSemiSolidWall);
+         var _listSize = instance_place_list(x, y + 1 + _clampYspd + movePlatMaxYspd, _array, _list, false);
+	     
+		 
+		 
+         for(var i = 0; i < _listSize; i++)    	
+	      {
+			  
+			  
+			    var _listInst = _list[| i];  
+				
+				if(_listInst.yspd <= yspd || instance_exists(myFloorPlat) )
+			    &&(_listInst.yspd > 0 || place_meeting(x, y+1 + _clampYspd, _listInst ) )
+				{
+			
+			
+			    if _listInst.object_index == oWall
+			    ||object_is_ancestor( _listInst.object_index,oWall)
+			    || floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd)
+			    {	
+				
+				    if !instance_exists(myFloorPlat)
+					|| _listInst.bbox_top + _listInst.yspd
+					{	
+						myFloorPlat = _listInst
+					}	
+			    } 
+		  }  
+    }                   	
+	      ds_list_destroy(_list);            
+                     	
+	         
+			       
+			if instance_exists(myFloorPlat) && !place_meeting(x, y + movePlatMaxYspd, myFloorPlat)
+			{	
+				myFloorPlat = noone;	
+			}	
+				   
+			if instance_exists(myFloorPlat)	   
+			{
+				var _subPixel = .5;
+				while !place_meeting(x, y + _subPixel, myFloorPlat) && !place_meeting(x, y, oWall){y += _subPixel;}
+				if myFloorPlat.object_index == oSemiSolidWall || object_is_ancestor(myFloorPlat.object_index, oSemiSolidWall)
+				{
+					while place_meeting(x, y, myFloorPlat){y -= _subPixel }
+				}
+				 y = floor(y);
+				 
+				 yspd = 0;
+				 set_on_ground(true);
+			}	
+				   
+				   
+				   
+				   
+	          
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+maskSpr = sPlayerIdle
+idleSpr = sPlayerIdle;
+runSpr = sPlayerRun;
+jumpSpr = sPlayerJump;		  
+			  
+			  
+	                           
+	
+	if abs(xspd)  >   0{sprite_index = runSpr;};
+if abs(xspd) >= moveSpd[1]{sprite_index = runSpr;};
+if xspd  ==   0{sprite_index = idleSpr;};
+if !onGround {sprite_index = jumpSpr;};
+
+mask_index = idleSpr;
+	
+	
+	
 	
 	
 	if yspd < 0{jumpHoldTimer = 0;}	
@@ -156,18 +238,9 @@ if jumpHoldTimer > 0
 }
 
 // SPRITE CONTROL
-maskSpr = sPlayerIdle
-idleSpr = sPlayerIdle;
-runSpr = sPlayerRun;
-jumpSpr = sPlayerJump;
 
 
-if abs(xspd)  >   0{sprite_index = runSpr;};
-if abs(xspd) >= moveSpd[1]{sprite_index = runSpr;};
-if xspd  ==   0{sprite_index = idleSpr;};
-if !onGround {sprite_index = jumpSpr;};
 
-mask_index = idleSpr;
 
 
 
