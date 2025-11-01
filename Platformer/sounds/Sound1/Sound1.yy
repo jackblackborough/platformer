@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":1,
   "conversionMode":0,
-  "duration":103.2287,
+  "duration":103.314285,
   "name":"Sound1",
   "parent":{
     "name":"Platformer",
